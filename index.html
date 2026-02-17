@@ -532,11 +532,14 @@
   </div>
 </footer>
 
-<p class="created-by">Copyright © 2026 Jutawan Takaful</p>
+<p class="created-by">Copyright © <span id="year"></span> Jutawan Takaful</p>
 
 <a class="back-to-top" role="button" aria-label="Back to top" title="Back to top" href="#home"></a>
 
 <script>
+// Update copyright year dynamically
+document.getElementById('year').textContent = new Date().getFullYear();
+
 function handleFormSubmit(event) {
   event.preventDefault();
   
