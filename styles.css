@@ -152,6 +152,14 @@ h3 {
   height: 48px;
 }
 
+.kenapa-list-icon {
+  flex-shrink: 0;
+  min-width: 48px;
+  min-height: 48px;
+  width: 48px;
+  height: 48px;
+}
+
 .header-list-text {
   margin: 0;
   font-size: var(--font-normal);
