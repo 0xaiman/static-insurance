@@ -267,6 +267,27 @@ h3 {
   word-wrap: break-word;
 }
 
+.anda-list-text {
+  margin: 0;
+  font-size: var(--font-normal);
+  line-height: 1.6;
+  color: white;
+  word-wrap: break-word;
+}
+
+
+#situasi-split{
+   display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap:var(--spacings-small);
+}
+
+#anda-split{
+   display: grid;
+  grid-template-columns: 1.5fr 1.5fr;
+  gap:var(--spacings-small);
+}
+
 #kenapa-split{
    display: grid;
   grid-template-columns: 2fr 1fr;
@@ -968,6 +989,18 @@ a {
 }
 
 #kenapa-split{
+  display: flex;
+  flex-direction: column;
+  gap:var(--spacings-small);
+}
+
+#situasi-split{
+  display: flex;
+  flex-direction: column;
+  gap:var(--spacings-small);
+}
+
+#anda-split{
   display: flex;
   flex-direction: column;
   gap:var(--spacings-small);
