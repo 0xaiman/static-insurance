@@ -282,6 +282,12 @@ h3 {
   gap:var(--spacings-small);
 }
 
+#azizam-split{
+   display: grid;
+  grid-template-columns: 1.75fr 1.25fr;
+  gap:var(--spacings-small);
+}
+
 #anda-split{
    display: grid;
   grid-template-columns: 1.5fr 1.5fr;
