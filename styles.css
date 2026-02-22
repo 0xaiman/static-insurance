@@ -1037,6 +1037,12 @@ a {
   gap:var(--spacings-small);
 }
 
+#azizam-split{
+  display: flex;
+  flex-direction: column;
+  gap:var(--spacings-small);
+}
+
 #anda-split{
   display: flex;
   flex-direction: column;
