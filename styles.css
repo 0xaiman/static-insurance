@@ -127,7 +127,7 @@ h3 {
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
-  padding: 1.2rem;
+  padding: 0.8rem;
   border-radius: 8px;
 }
 
@@ -530,7 +530,7 @@ fieldset {
 
 .main-header {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: var(--spacings-large);
   justify-content: center;
   align-content: center;
@@ -831,6 +831,27 @@ a {
 
 .full-width {
   width: 100%;
+}
+
+.berminat-btn{
+  display: block;
+  border: none;
+  background: none;
+  border: 5px solid #fff;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  color: #fff;
+  font-size: 3rem;
+  width: 100%;
+  text-align: center;
+}
+
+.berminat-btn:hover {
+  color: var(--primary-color);
+  background: gold;
+  border: 5px solid black;
+
+
 }
 
 @media (max-width: 600px) {
