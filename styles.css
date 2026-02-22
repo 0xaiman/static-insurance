@@ -525,6 +525,9 @@ fieldset {
   margin: 0 auto;
   padding: var(--spacings-medium);
   min-height: 100vh;
+  flex-direction: column;
+  align-content: center;
+
 }
 
 .section3-content {
