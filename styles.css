@@ -869,6 +869,13 @@ a {
     height: 0;
   }
 
+    .main-header {
+    /* grid-template-columns: 1fr;
+     */
+     display: flex;
+     flex-direction: column-reverse;
+  }
+
   .grid-section,
   .main-header {
     grid-template-columns: 1fr;
