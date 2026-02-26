@@ -1,0 +1,101 @@
+# Etiqa Takaful Insurance Landing Page - Apache Configuration
+# Best practices for static website performance, security, and SEO
+
+# Enable mod_rewrite for URL rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Remove www from URL (non-www canonical)
+    # Comment out the next 4 lines and uncomment the lines after if you prefer www version
+    RewriteCond %{HTTP_HOST} ^www\.jutawantakaful\.com$ [NC]
+    RewriteRule ^(.*)$ https://jutawantakaful.com/$1 [R=301,L]
+
+    # Redirect HTTP to HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # Remove trailing slashes (optional - comment out if you prefer trailing slashes)
+    # RewriteCond %{REQUEST_FILENAME} !-d
+    # RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+    # Handle 404 errors gracefully
+    ErrorDocument 404 /index.html
+</IfModule>
+
+# Enable GZIP compression for text-based assets
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+    AddEncoding gzip .gz
+    <FilesMatch "\.(gz)$">
+        Header set Content-Encoding: gzip
+    </FilesMatch>
+</IfModule>
+
+# Browser caching with mod_expires
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    
+    # HTML files - cache for 1 hour (content updates frequently)
+    ExpiresByType text/html "access plus 1 hour"
+    
+    # CSS and JavaScript - cache for 1 month
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    
+    # Image files - cache for 6 months
+    ExpiresByType image/jpeg "access plus 6 months"
+    ExpiresByType image/gif "access plus 6 months"
+    ExpiresByType image/png "access plus 6 months"
+    ExpiresByType image/webp "access plus 6 months"
+    ExpiresByType image/svg+xml "access plus 6 months"
+    
+    # Font files - cache for 1 year
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+</IfModule>
+
+# Set proper MIME types
+<IfModule mod_mime.c>
+    AddType application/json .json
+    AddType application/ld+json .jsonld
+    AddType image/webp .webp
+    AddEncoding gzip .js.gz
+    AddEncoding gzip .css.gz
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    # Prevent clicking outside of frames
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevent MIME-type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS filter in browsers
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Disable directory listing for security
+Options -Indexes
+
+# Block access to specific files
+<FilesMatch "(?i)(\.git|\.gitignore|\.htaccess|composer\.json|composer\.lock|\.env|\.env\.example|package\.json|package-lock\.json)">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Allow access to fonts and media from cross-origins (CORS)
+<IfModule mod_headers.c>
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|svg|jpg|jpeg|png|gif|webp)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
